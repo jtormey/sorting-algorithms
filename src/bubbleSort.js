@@ -1,12 +1,25 @@
 var bubbleSort = function (array) {
-	for (var i = 0; i < array.length; i++) {
-		for (var j = array.length; j > 0; j--) {
-			if (array[j] < array[j - 1]) {
-				var tmp = array[j];
-				array[j] = array[j - 1];
-				array[j - 1] = tmp;
+
+	// Start by making as many passes as there are elements in the array
+	// lastIdx decreases with each pass, reducing the size of the next pass
+	for (var lastIdx = array.length - 1; lastIdx > 0; --lastIdx) {
+
+		// This is where each "pass" happens
+		// From the beginning of the array, examine pairs of indexes
+		for (var currentIdx = 0; currentIdx < lastIdx; ++currentIdx) {
+
+			// If the lower index has a greater value, switch them around
+			if (array[currentIdx] > array[currentIdx + 1]) {
+
+				var tmp = array[currentIdx];
+				array[currentIdx] = array[currentIdx + 1];
+				array[currentIdx + 1] = tmp;
+
 			}
+
 		}
+
 	}
+
 	return array;
 };
